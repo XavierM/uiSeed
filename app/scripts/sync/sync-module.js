@@ -4,14 +4,12 @@
     define(function(require) {
 
         var angular = require('angular'),
-            syncCtrl = require('sync/sync-controller'),
             syncTpl = require('text!sync/html/sync.html');
 
         require('ui-router');
+        require('ocLazyLoad');
 
-        var syncModule = angular.module('sync', ['ui.router']);
-
-        syncModule.controller(syncCtrl.id, syncCtrl);
+        var syncModule = angular.module('sync', ['ui.router', 'oc.lazyLoad']);
 
         var syncConfig = function($stateProvider, $urlRouterProvider) {
 
@@ -19,11 +17,22 @@
                 url: 'e3Intake/sync',
                 template: syncTpl,
                 parent:'root',
-                controller: syncCtrl.id,
-                controllerAs: syncCtrl.nameAs
-                /*,
                 resolve: {
-                }*/
+                    syncCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'sync',
+                            files:['scripts/sync/sync-controller.js']
+                        });
+                    }],
+                    syncSrv: ['$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'sync',
+                            files:['scripts/sync/sync-services.js']
+                        });
+                    }]
+                },
+                controller: 'syncController',
+                controllerAs: 'syncCtrl'
             };
 
             $stateProvider.state('sync', syncState);

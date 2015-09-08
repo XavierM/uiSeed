@@ -1,6 +1,6 @@
 # Dependencies
 node_modules
-app/lib/bower
+app/lib/bower_components
 
 # Build files
 dist

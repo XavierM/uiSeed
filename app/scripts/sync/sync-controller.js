@@ -1,10 +1,13 @@
 (function() {
     'use strict';
 
-    define(function() {
+    define(function(require) {
+        var angular = require('angular');
 
-        var syncController = function() {
+        var syncController = function(syncSrv) {
             var vm = this;
+            vm.getContent = syncSrv.getContent;
+
             return vm;
         };
 
@@ -13,7 +16,8 @@
         syncController.nameAs = 'syncCtrl';
 
         //ADD Dependency Injection if needed
+        syncController.$inject = ['syncService'];
 
-        return syncController;
+        angular.module('sync').controller(syncController.id, syncController);
     });
 }());
