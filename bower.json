@@ -1,0 +1,18 @@
+{
+  "name": "e3-ui-seed",
+  "version": "0.0.0",
+  "dependencies": {
+    "almond": "~0.3.1",
+    "angular": "~1.4.5",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5",
+    "lodash": "~3.10.1",
+    "requirejs-text": "~2.0.14"
+    "restangular": "~1.5.1"
+    "oclazyload ": "~1.0.4"
+  },
+  "devDependencies": {
+    "requirejs": "~2.1.20",
+    "angular-mocks": "~1.4.6"
+  }
+}
