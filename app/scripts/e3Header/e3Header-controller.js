@@ -3,8 +3,6 @@
 
     define(function(require) {
 
-        require('e3Header/e3Header-service');
-
         var e3HeaderController = function(e3HeaderService) {
             var vm = this;
             vm.getContent = e3HeaderService.getContent;
